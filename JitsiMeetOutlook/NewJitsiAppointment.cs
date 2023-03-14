@@ -41,8 +41,18 @@ namespace JitsiMeetOutlook
                     DateTime dateEnd = calView.SelectedEndTime;
                     if (dateStart != dateNull && dateEnd != dateNull)
                     {
-                        newAppointment.Start = dateStart;
-                        newAppointment.End = dateEnd;
+                        if ((dateEnd - dateStart).Days >= 1)
+                        {
+                            //Set the selected date properly but keep default time
+                            dateEnd = dateEnd.AddDays(-1);
+                            newAppointment.Start = new DateTime(dateStart.Year, dateStart.Month, dateStart.Day, newAppointment.Start.Hour, newAppointment.Start.Minute, newAppointment.Start.Second);
+                            newAppointment.End = new DateTime(dateEnd.Year, dateEnd.Month, dateEnd.Day, newAppointment.End.Hour, newAppointment.End.Minute, newAppointment.End.Second);
+                        }
+                        else
+                        {
+                            newAppointment.Start = dateStart;
+                            newAppointment.End = dateEnd;
+                        }
                     }
                 }
 
