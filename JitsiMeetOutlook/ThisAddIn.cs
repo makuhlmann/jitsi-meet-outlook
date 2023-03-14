@@ -10,8 +10,11 @@ namespace JitsiMeetOutlook
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             ShowRibbonAppointment = false;
-            checkFirstRunSettings();
-            readLanguageJson();
+            new System.Threading.Thread(() =>
+            {
+                checkFirstRunSettings();
+                readLanguageJson();
+            }).Start();
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
