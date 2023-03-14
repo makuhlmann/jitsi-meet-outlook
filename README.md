@@ -72,6 +72,11 @@ Since this plug-in is brand new, any feedback would be most appreciated!
 
 ## Changelog
 
+### v0.6.7
+Bugfixes:
+* Appointments no longer default to 24h when selecting day in calender, instead using default duratin where applicable
+* Fixed startup performance issue using a thread
+
 ### v0.6.6
 Enhancements:
 * Add Czech language support (thanks to [eltovegasag](/../../../../eltovegasag))
